@@ -1,5 +1,5 @@
 <script>
-  let defaultQ = {
+  const defaultQ = {
     id: "question",
     caption: "Here's a question for you",
     type: "text",
@@ -7,14 +7,17 @@
     validation: () => true,
   };
   export let question;
+  export let visible = true;
   question = { ...defaultQ, ...question };
 </script>
 
-<p>
-  <label for={question.id}>{question.caption}</label>
-  <input
-    id={question.id}
-    type={question.type}
-    placeholder={question.placeholder}
-  />
-</p>
+{#if visible}
+  <p>
+    <label for={question.id}>{question.caption}</label>
+    <input
+      id={question.id}
+      type={question.type}
+      placeholder={question.placeholder}
+    />
+  </p>
+{/if}

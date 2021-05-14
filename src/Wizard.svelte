@@ -1,5 +1,6 @@
 <script>
   import Page from "./Page.svelte";
+  import SidebarLayout from "./sidebarLayout.svelte";
 
   export let pages;
 
@@ -8,32 +9,16 @@
   if (pages.length) {
     selected = pages[ix];
   }
-
-  let sidebarCollapse = false;
 </script>
 
-{#if !sidebarCollapse}
-  <div id="pageList">
-    <ul>
-      {#each pages as p, n (p.id)}
-        <li class={n === ix ? "highlight" : ""}><span>{p.name}</span></li>
-      {/each}
-    </ul>
-  </div>
-{/if}
-
-<div id="pageContent">
-  <button
-    id="collapes"
-    on:click={() => {
-      sidebarCollapse = !sidebarCollapse;
-    }}
-  >
-    {sidebarCollapse ? "+" : "-"}
-  </button>
-  <p class="buttons">
-    <button>Save for later</button>
-  </p>
+<SidebarLayout
+  {ix}
+  {pages}
+  change={(incoming) => {
+    ix = incoming;
+    selected = pages[incoming];
+  }}
+>
   <p class="buttons">
     <button
       disabled={ix === 0}
@@ -56,32 +41,14 @@
   {#if ix + 1 === pages.length}
     <div class="buttons"><button>Submit</button></div>
   {/if}
-</div>
+
+  <p class="buttons">
+    <button>Save for later</button>
+  </p>
+</SidebarLayout>
 
 <style>
   .buttons {
     text-align: center;
-  }
-  #pageList,
-  #pageContent {
-    height: 100%;
-    float: left;
-  }
-  #pageList {
-    width: 30%;
-    background-color: lavenderblush;
-  }
-  #pageList > ul {
-    list-style-type: none;
-  }
-  #pageContent {
-    width: 70%;
-  }
-  #collapes {
-    width: 2rem;
-    height: 2rem;
-  }
-  .highlight {
-    background-color: burlywood;
   }
 </style>
