@@ -5,7 +5,7 @@
 		id: "12345",
 		name: "Page Name",
 	};
-	export let questions;
+	export let questions = [];
 </script>
 
 <main id={page.id}>

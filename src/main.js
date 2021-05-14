@@ -3,6 +3,7 @@ import Wizard from "./index.js"
 const app = new Wizard({
   target: document.body,
   props: {
+    name: "Example Wizard",
     pages: [
       {
         id: "123456",
@@ -63,6 +64,10 @@ const app = new Wizard({
             type: "text",
           },
         ],
+      }, {
+        id: "he90fwiadnoks",
+        name: "just kidding",
+        questions: []
       }
     ]
   }

@@ -2,7 +2,8 @@
   import Page from "./Page.svelte";
   import SidebarLayout from "./sidebarLayout.svelte";
 
-  export let pages;
+  export let pages = [];
+  export let name;
 
   var selected;
   var ix = 0;
@@ -19,6 +20,7 @@
     selected = pages[incoming];
   }}
 >
+  <h1>{name}</h1>
   <p class="buttons">
     <button
       disabled={ix === 0}
@@ -26,10 +28,13 @@
         ix--;
         selected = pages[ix];
       }}
+      style="margin-right: 1%;"
     >
       &#8592; Previous</button
     >
+    <button>Save for later</button>
     <button
+      style="margin-left: 1%;"
       disabled={ix + 1 === pages.length}
       on:click={() => {
         ix++;
@@ -39,12 +44,8 @@
   </p>
   <Page page={selected} questions={selected.questions} />
   {#if ix + 1 === pages.length}
-    <div class="buttons"><button>Submit</button></div>
+    <p class="buttons"><button>Submit</button></p>
   {/if}
-
-  <p class="buttons">
-    <button>Save for later</button>
-  </p>
 </SidebarLayout>
 
 <style>
