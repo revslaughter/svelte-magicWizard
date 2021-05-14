@@ -21,7 +21,7 @@
   }}
 >
   <h1>{name}</h1>
-  <p class="buttons">
+  <span class="buttons" id="btnGroup">
     <button
       disabled={ix === 0}
       on:click={() => {
@@ -41,7 +41,7 @@
         selected = pages[ix];
       }}>Next &#10142;</button
     >
-  </p>
+  </span>
   <Page page={selected} questions={selected.questions} />
   {#if ix + 1 === pages.length}
     <p class="buttons"><button>Submit</button></p>
@@ -49,7 +49,14 @@
 </SidebarLayout>
 
 <style>
+  h1 {
+    display: inline;
+  }
   .buttons {
+    display: inline;
     text-align: center;
+  }
+  #btnGroup {
+    margin-left: 4em;
   }
 </style>

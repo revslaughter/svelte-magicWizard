@@ -13,6 +13,10 @@ const app = new Wizard({
             id: "question1",
             caption: "Here is the first question",
             type: "text",
+            help: {
+              helpIcon: "?",
+              helpText: "No YOU need help. You're just clicking on things I mean come on"
+            }
           },
           {
             id: "question2",

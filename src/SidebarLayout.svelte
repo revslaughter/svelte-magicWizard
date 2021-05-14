@@ -62,6 +62,7 @@
   #collapes {
     width: 2rem;
     height: 2rem;
+    display: block;
   }
   .highlight {
     background-color: lightyellow;
